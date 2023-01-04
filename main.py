@@ -1,6 +1,7 @@
 # Main Python file
-
-
+from interface import Interfaz
 
 if __name__ == "__main__":
-    pass
+    INTERFAZ = Interfaz()
+    INTERFAZ.show()
+    user_input = input(">>> ")

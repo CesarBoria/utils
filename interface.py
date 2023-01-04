@@ -1,5 +1,7 @@
 # This module contains the interface of the CLI
 import sys
+
+
 class Interfaz:
     INTERFAZ = """
     ------------------------------------------
@@ -7,9 +9,8 @@ class Interfaz:
     UTILS - A group of useful tools for scripting
     
     ------------------------------------------
-    """
-
-    OPCIONES = """
+    
+    
     Select a tool to run. You can return to this list entering GO BACK.
     You can get more info about a tool entering INFO <Nº OF TOOL>.
     You can exit the program by entering EXIT at any time.
@@ -32,36 +33,41 @@ class Interfaz:
     
     """
     INFORMACION = {
-    0: "Shows general information about the Python interpreter, the system, ...",
-    1: "Initializes a Python project, creating a file and directory structure (scaffolding)",
-    2: "Shows byte/hex code of a file, in an ordered fashion",
-    3: "Cleans up a directory, allocating files according to their extension (in folders specifying such extension)",
-    4: "Analyzes a directory, showing info like total size used, largest file, absolute path, ...",
-    5: "Creates a CRON job interactively",
-    6: "Easy to use tool for importing or exporting dotfiles",
-    7: "Tool for checking imports in a Python project. It will show a graph with interdependencies between modules",
-    8: "Encrypts or decrypts using known and tested algorithms",
-    9: "Password or SSH/GPG key generator",
-    10: "Allows to automate mouse movement and keyboard input",
-    11: "Shows deltas (diffs) between two files, git style",
-    12: "Checks the status of an API endpoint",
-    13: "Redirects a given URL to a different web site",
-    14: "Shows information about active systemd processes (systemctl)"
+        0: "Shows general information about the Python interpreter, the system, ...",
+        1: "Initializes a Python project, creating a file and directory structure (scaffolding)",
+        2: "Shows byte/hex code of a file, in an ordered fashion",
+        3: "Cleans up a directory, allocating files according to their extension (in folders specifying such extension)",
+        4: "Analyzes a directory, showing info like total size used, largest file, absolute path, ...",
+        5: "Creates a CRON job interactively",
+        6: "Easy to use tool for importing or exporting dotfiles",
+        7: "Tool for checking imports in a Python project. It will show a graph with interdependencies between modules",
+        8: "Encrypts or decrypts using known and tested algorithms",
+        9: "Password or SSH/GPG key generator",
+        10: "Allows to automate mouse movement and keyboard input",
+        11: "Shows deltas (diffs) between two files, git style",
+        12: "Checks the status of an API endpoint",
+        13: "Redirects a given URL to a different web site",
+        14: "Shows information about active systemd processes (systemctl)"
     }
-    def info(self,n: int) -> str:
+
+    def info(self, n: int):
         """Shows info about the selected option"""
         if n >= 0 and n <= len(self.INFORMACION):
             print(self.INFORMACION[n])
         else:
             print("Invalid input, if you want to exit, enter EXIT")
+
     @staticmethod
     def exit():
         """Exits the program"""
         sys.exit()
+
     def show(self):
-        print(self.INTERFAZ + self.OPCIONES)
+        print(self.INTERFAZ)
+
 
 if __name__ == '__main__':
     """Simple check of modules, for dev checking"""
     import os
+
     print(f"Nº of modules in /modules: {len(os.listdir('./modules'))}")

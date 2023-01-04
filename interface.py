@@ -67,7 +67,7 @@ class Interfaz:
 
 
 if __name__ == '__main__':
-    """Simple check of modules, for dev checking"""
+    """Simple check of modules, for dev checking. And doctest testing"""
     import os
 
-    print(f"Nº of modules in /modules: {len(os.listdir('./modules'))}")
+    print(f"\n\nNº of modules in ./modules: {len(os.listdir('./modules'))}")

@@ -16,6 +16,14 @@ And then, create the virtual environment and handle dependencies:
 
         poetry install
         poetry shell
+### Tests
+
+All tests are found in ./tests, my tool of choice tends to be, hypothesis, tox or pytest with plugins. I've used doctest in this case, as a way of learning the tool myself.
+*In my opinion, doctesting isn't as efficient as unittesting, specially with libraries like pytest*.
+
+To run any test, just use:
+
+    make doctest
 
 ### Running the app
 

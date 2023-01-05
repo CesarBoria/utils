@@ -52,7 +52,7 @@ class Interfaz:
 
     def info(self, n: int):
         """Shows info about the selected option"""
-        if n >= 0 and n <= len(self.INFORMACION):
+        if n >= 0 and n <= len(self.INFORMACION) - 1:
             print(self.INFORMACION[n])
         else:
             print("Invalid input, if you want to exit, enter EXIT")
@@ -67,7 +67,6 @@ class Interfaz:
 
 
 if __name__ == '__main__':
-    """Simple check of modules, for dev checking. And doctest testing"""
-    import os
-
-    print(f"\n\nNº of modules in ./modules: {len(os.listdir('./modules'))}")
+    # Test basico con doctest
+    import doctest
+    doctest.testfile('./tests/test_interface.txt', verbose=True)

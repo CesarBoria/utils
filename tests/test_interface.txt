@@ -1,0 +1,18 @@
+Test for interface.py
+---------------------
+
+Mocking the instance
+>>> from interface import Interfaz
+>>> inst = Interfaz()
+
+Running the tests
+>>> inst.info(2)
+Shows byte/hex code of a file, in an ordered fashion
+>>> inst.info(-1)
+Invalid input, if you want to exit, enter EXIT
+>>> inst.info(15)
+Invalid input, if you want to exit, enter EXIT
+>>> inst.info('a')
+Invalid input, if you want to exit, enter EXIT
+>>> inst.info()
+Invalid input, if you want to exit, enter EXIT

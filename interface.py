@@ -1,5 +1,6 @@
 # This module contains the interface of the CLI
 import sys
+import modules
 
 
 class Interfaz:
@@ -49,18 +50,17 @@ class Interfaz:
         13: "Redirects a given URL to a different web site",
         14: "Shows information about active systemd processes (systemctl)"
     }
+    IMPORTS = (
+        "from modules.info import mod_main\nmod_main()",
+        ""
+    )
 
     def info(self, n: int):
         """Shows info about the selected option"""
-        if n >= 0 and n <= len(self.INFORMACION) - 1:
+        if n is int and 0 <= n <= len(self.INFORMACION) - 1: # Check de int manual, mypy es mejor opcion
             print(self.INFORMACION[n])
         else:
             print("Invalid input, if you want to exit, enter EXIT")
-
-    @staticmethod
-    def exit():
-        """Exits the program"""
-        sys.exit()
 
     def show(self):
         print(self.INTERFAZ)

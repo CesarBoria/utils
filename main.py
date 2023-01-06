@@ -16,7 +16,12 @@ def convertir(input) -> int:
 
     return output
 
-if __name__ == "__main__":
+
+def crear_interfaz():
     _interface = Interfaz()
     _interface.show()
     user_input = convertir(input(">>> "))
+    exec(_interface.IMPORTS[user_input])
+
+if __name__ == "__main__":
+    crear_interfaz()

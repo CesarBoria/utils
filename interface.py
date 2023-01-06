@@ -1,7 +1,4 @@
 # This module contains the interface of the CLI
-import sys
-import modules
-
 
 class Interfaz:
     INTERFAZ = """

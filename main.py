@@ -1,7 +1,8 @@
 # Main Python file
-from interface import Interfaz
+from modules.interfaces.main_interface import Interfaz
 
 def convertir(input) -> int:
+    '''Makes sure the input is an int''' # TODO ver si esto hace que falle info(n=2) en main_interface.py
     try:
         output = int(input)
     except ValueError:
@@ -18,6 +19,8 @@ def convertir(input) -> int:
 
 
 def crear_interfaz():
+    '''Creates the interface instantiating it, and then using the method show.
+    The selection is handled by IMPORTS tuple'''
     _interface = Interfaz()
     _interface.show()
     user_input = convertir(input(">>> "))

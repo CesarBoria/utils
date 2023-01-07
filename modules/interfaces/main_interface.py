@@ -49,21 +49,35 @@ class Interfaz:
     }
     IMPORTS = (
         "from modules.info import mod_main\nmod_main()",
-        ""
+        "from modules.initializer import mod_main\nmod_main()",
+        "from modules.explorer import mod_main\nmod_main()",
+        "from modules.organizer import mod_main\nmod_main()",
+        "from modules.analyzer import mod_main\nmod_main()",
+        "from modules.cron import mod_main\nmod_main()",
+        "from modules.dotfile import mod_main\nmod_main()",
+        "from modules.import_checker import mod_main\nmod_main()",
+        "from modules.crypto import mod_main\nmod_main()",
+        "from modules.key_gen import mod_main\nmod_main()",
+        "from modules.mouse_keyb import mod_main\nmod_main()",
+        "from modules.diff_tool import mod_main\nmod_main()",
+        "from modules.api_check import mod_main\nmod_main()",
+        "from modules.web_redirect import mod_main\nmod_main()",
+        "from modules.systemd import mod_main\nmod_main()"
     )
 
-    def info(self, n: int):
+    def info(self, n: int = -2):
         """Shows info about the selected option"""
-        if n is int and 0 <= n <= len(self.INFORMACION) - 1: # Check de int manual, mypy es mejor opcion
+        try:
             print(self.INFORMACION[n])
-        else:
+        except (TypeError, KeyError):
             print("Invalid input, if you want to exit, enter EXIT")
+            # TODO hacer que la llamada sea recursiva
 
     def show(self):
+        '''Shows the interface (creates it)'''
         print(self.INTERFAZ)
 
 
 if __name__ == '__main__':
-    # Test basico con doctest
     import doctest
-    doctest.testfile('./tests/test_interface.txt', verbose=True)
+    doctest.testfile('../../tests/test_interface.txt', verbose=True)

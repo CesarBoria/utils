@@ -1,8 +1,8 @@
-Test for interface.py
+Test for main_interface.py
 ---------------------
 
 Mocking the instance
->>> from interface import Interfaz
+>>> from modules.interfaces.main_interface import Interfaz
 >>> inst = Interfaz()
 
 Running the tests

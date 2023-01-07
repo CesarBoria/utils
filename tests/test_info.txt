@@ -1,0 +1,11 @@
+Test for info.py
+---------------------
+
+Mocking the mod_main function
+>>> from modules.info import mod_main
+
+Running the test
+>>> mod_main('a')
+Traceback (most recent call last):
+...
+TypeError: mod_main() takes 0 positional arguments but 1 was given

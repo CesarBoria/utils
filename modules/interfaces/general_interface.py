@@ -1,5 +1,5 @@
 BASE = f"""
-Introduce GO BACK para volver atras, o EXIT para salir\n
+Introduce GO BACK para volver atras, o EXIT para salir\n>>> 
 """
 
 from main import crear_interfaz

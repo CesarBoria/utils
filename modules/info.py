@@ -1,7 +1,6 @@
 # Tool for showing basic information about the system
 import os
 import sys, subprocess, psutil
-from os import system
 from modules.interfaces.general_interface import BASE, selector
 
 
@@ -22,7 +21,7 @@ def cpu_info():
     cpu_info_raw = cpu_info_raw.replace("\n", "||")
     cpu_info_raw = cpu_info_raw.split("||")
     cpu_info = []
-    for key, value in zip(range(7), (0, 4, 7 ,10, 20, 22, 23)):
+    for key, value in zip(range(7), (0, 4, 7, 10, 20, 22, 23)):
         value_short = cpu_info_raw[value]
         value_short = value_short[value_short.find(":")+1:]
         cpu_info.append((key, value_short))

@@ -65,7 +65,7 @@ class Interfaz:
         "from modules.systemd import mod_main\nmod_main()"
     )
 
-    def info(self, n: int = -2):
+    def info(self, n: int):
         """Shows info about the selected option"""
         try:
             print(self.INFORMACION[n])

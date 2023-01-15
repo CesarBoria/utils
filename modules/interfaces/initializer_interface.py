@@ -50,21 +50,16 @@ Do you want to include some setup files for setuptools (making the app a Python 
 """
 ,
 'OPTION_5': """
-Do you want to include a /data directory for data storage (both for data analysis and development database, SQL and NoSQL)?
-
-"""
-,
-'OPTION_6': """
 Will you use this app for data analysis or backend web development?
 
 """
 ,
-'OPTION_7': """
+'OPTION_6': """
 Do you want to include a /binaries directory for binary files, and a basic makefile (quick app installation and initialization)?
 
 """
 ,
-'OPTION_8': """
+'OPTION_7': """
 Do you want to initialize a local git repository for the app?
 
 """

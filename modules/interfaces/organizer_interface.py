@@ -10,6 +10,15 @@ ORGANIZER
 4 HIDDEN - Shows and creates hidden files and directories
 5 LINK - Creates symlinks
 
+Example: Moving the file info.txt from /home to /home/dir
+
+    PATH
+        >>> Current path: /
+    PATH home
+        >>> New path set to /home
+    DO MV info.txt dir
+        >>> File info.txt moved to /home/dir
+
 """
 }
 

@@ -2,6 +2,7 @@
 from modules.interfaces.main_interface import Interfaz
 from time import sleep
 
+
 def convertir(input) -> int:
     '''Makes sure the input is an int''' # TODO ver si esto hace que falle info(n=2) en main_interface.py
     try:
@@ -18,6 +19,7 @@ def convertir(input) -> int:
 
     return output
 # TODO: falla en 'a', arreglar
+
 
 def crear_interfaz():
     '''Creates the interface instantiating it, and then using the method show.

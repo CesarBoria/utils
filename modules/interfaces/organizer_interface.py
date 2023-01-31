@@ -1,7 +1,7 @@
 MOD_INTERFACE = {
 'HEAD': """
 ORGANIZER
------------
+---------
 
 0 PATH - Change, set or show the working path (where the tool can make changes)
 1 DO <COMMAND> - Copy (CP), move (MV) or remove (RM) files and directories
@@ -20,10 +20,6 @@ Example: Moving the file info.txt from /home to /home/dir
         >>> File info.txt moved to /home/dir
 
 """
+,
+# Luego se añadiran opciones de info
 }
-
-class Explorer:
-    def __init__(self):
-        pass
-    def __repr__(self):
-        pass

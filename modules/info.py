@@ -39,7 +39,7 @@ def mod_main():
     Python version: {sys.version[:sys.version.find(" ")]}
     Operative system: {OS_ver()}
     Endianness: {str(sys.byteorder).capitalize()} Endian
-    Nº of built-in Python modules: {len(sys.builtin_module_names)} found, 59 to be expected
+    Nº of built-in Python modules: {len(sys.builtin_module_names)} found
     PYTHONPATH: {str("  ".join(sys.path)).replace(r"/home/starseeker/Escritorio/Proyectos/Noethercode", ".")}
     CPU model: CPU {cpu_info[2]} ({cpu_info[0]} architecture), {cpu_info[1]} cores ({cpu_info[3]} threads each)
     CPU cache: L1 {str(cpu_info[4])[:5]}  L2 {str(cpu_info[5])[:6]}  L3 {str(cpu_info[6])[:4]}

@@ -70,7 +70,7 @@ def mod_main():
         with open(os.path.join(base_path, 'templates', 'index.html'), 'w') as file:
             pass # TODO: Template basico
         os.makedirs(os.path.join(base_path, 'static', 'css'))
-        with open(os.path.join(base_path, 'static', 'css', 'stylesheet.css'), 'w') as file:
+        with open(os.path.join(base_path, 'static', 'css', 'style.css'), 'w') as file:
             pass # TODO: Template basico
         os.mkdir(os.path.join(base_path, 'static', 'fonts'))
         os.mkdir(os.path.join(base_path, 'static', 'icons'))
@@ -93,3 +93,7 @@ def mod_main():
     os.chdir(os.path.join(os.getcwd(), 'utils'))
     out = input(BASE)
     selector(out)
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testfile("../tests/test_initializer.txt", verbose=True)

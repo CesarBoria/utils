@@ -54,15 +54,25 @@ as the relative path, unless an absolute path is specified
 """
 ORDER <VALID_DIR> - Creates folders inside a valid directory according to file extension and moves
                     all files inside the corresponding folder according to extension
+ORDER HERE - Moves files from the current working directory to folders matching the extension
 ORDER - Creates folders in desktop according to file extension and moves all files inside the
         corresponding folder ~/Desktop/new_folder_by_extension according to extension
-        
 
+SHOW allows a quick view of what's inside the current directory (or any path)
 
 """
 ,
 'SHOW':
 """
+SHOW - 
+SHOW ALL - 
+SHOW <VALID_DIR> - 
+SHOW ALL <VALID_DIR> - 
+SHOW SYSTEM - 
+SHOW USER - 
+
+
+Analyzes a directory, showing info like total size used, largest file, absolute path, ...
 
 """
 ,

@@ -15,35 +15,33 @@ class Interfaz:
     
     0 - General information
     1 - Project initializer
-    2 - Organizer
-    3 - Analyzer
-    4 - CRON job creator
-    5 - Dotfile handler
-    6 - Import checker
-    7 - Encrypter
-    8 - Key generator
-    9 - Mouse and keyboard handler
-    10 - Diff tool
-    11 - API checker
-    12 - Web redirector
-    13 - Systemd tool
+    2 - Explorer
+    3 - CRON job creator
+    4 - Dotfile handler
+    5 - Import checker
+    6 - Encrypter
+    7 - Key generator
+    8 - Mouse and keyboard handler
+    9 - Diff tool
+    10 - API checker
+    11 - Web redirector
+    12 - Systemd tool
     
     """
     INFORMACION = {
         0: "Shows general information about the Python interpreter, the system, ...",
         1: "Initializes a Python project, creating a file and directory structure (scaffolding)",
-        2: "Cleans up a directory, allocating files according to their extension (in folders specifying such extension)",
-        3: "Analyzes a directory, showing info like total size used, largest file, absolute path, ...",
-        4: "Creates a CRON job interactively",
-        5: "Easy to use tool for importing or exporting dotfiles",
-        6: "Tool for checking imports in a Python project. It will show a graph with interdependencies between modules",
-        7: "Encrypts or decrypts using known and tested algorithms",
-        8: "Password or SSH/GPG key generator",
-        9: "Allows to automate mouse movement and keyboard input",
-        10: "Shows deltas (diffs) between two files, git style",
-        11: "Checks the status of an API endpoint",
-        12: "Redirects a given URL to a different web site",
-        13: "Shows information about active systemd processes (systemctl)"
+        2: "Allows for multiple core functionalities with directories, and provides file cleaning",
+        3: "Creates a CRON job interactively",
+        4: "Easy to use tool for importing or exporting dotfiles",
+        5: "Tool for checking imports in a Python project. It will show a graph with interdependencies between modules",
+        6: "Encrypts or decrypts using known and tested algorithms",
+        7: "Password or SSH/GPG key generator",
+        8: "Allows to automate mouse movement and keyboard input",
+        9: "Shows deltas (diffs) between two files, git style",
+        10: "Checks the status of an API endpoint",
+        11: "Redirects a given URL to a different web site",
+        12: "Shows information about active systemd processes (systemctl)"
     }
     IMPORTS = (
         "from modules.info import mod_main\nmod_main()",

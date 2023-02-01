@@ -30,7 +30,7 @@ def mod_main():
         print('There was an error, please, copy and paste this following text and send it to my github, thanks :)')
         print(repr(e))
     else: # TODO: Refactorizar a match/case en Python 3.11
-        if str(_input[0]).lower() == 'path': # TODO: Crear docs para PATH
+        if str(_input[0]).lower() == 'path': # TODO: Comprobar que funciona
             if len(_input) == 1:
                 print(f'Current path: {os.getcwd()}')
             elif len(_input) == 2:
@@ -60,7 +60,14 @@ def mod_main():
             except IndexError:
                 order_files()
         elif str(_input[0]).lower() == 'show':
-            pass
+            if len(_input) > 3:
+                print("Incorrect syntax, restarting the tool")
+                mod_main()
+            if 'all' in str(_input[1]).lower() or 'all' in str(_input[2]).lower():
+                try:
+                    show_info([item for item in _input[1:] if item.lower() != 'all'][0], all_info=True)
+                except IndexError:
+                    show_info()
         elif str(_input[0]).lower() == 'hidden':
             pass
         elif str(_input[0]).lower() == 'link':
@@ -75,20 +82,17 @@ def mod_main():
         mod_main()
 
 
-def get_path(_input: str) -> str:
+def get_path(_input: str):
     try:
         if _input[0] in ('.', os.sep):
             os.chdir(_input)
-            print(f'New path set to {os.getcwd()}')
         elif _input[0] == '~':
             new_path = _input.replace('~', os.environ['HOME'])
             os.chdir(new_path)
-            print(f'New path set to {os.getcwd()}')
         else:
             new_path = os.path.join(os.getcwd(), _input)
             os.chdir(new_path)
-            print(f'New path set to {new_path}')
-        return os.getcwd()
+        print(f'New path set to {os.getcwd()}')
     except FileNotFoundError:
         print('There is no directory with that name')
         mod_main()
@@ -124,6 +128,8 @@ def order_files(_input: str = os.path.join(os.environ['HOME'], 'Desktop')): # TO
     if _input == os.path.join(os.environ['HOME'], 'Desktop'):
         if not os.path.exists(os.path.join(os.environ['HOME'], 'Desktop')):
             _input = os.path.join(os.environ['HOME'], 'Escritorio')
+    if _input.lower() == 'here':
+        _input = os.getcwd()
     files = [file for file in os.listdir(_input) if os.path.isfile(os.path.join(_input, file))]
     extensions = {file[file.rfind('.') + 1:] for file in files}
     for ext in extensions:
@@ -137,8 +143,8 @@ def order_files(_input: str = os.path.join(os.environ['HOME'], 'Desktop')): # TO
                 shutil.move(os.path.join(_input, file), os.path.join(_input, ext))
 
 
-def show_info(_input: str = '') -> str:
-    pass
+def show_info(_input: str = os.getcwd(), all_info=False):
+    print(_input)
 
 
 def show_hidden(_input: str = '') -> str:
@@ -165,4 +171,10 @@ def parse_tool() -> list[str]:
 
 if __name__ == '__main__':
     import doctest
-    doctest.testfile("../tests/test_organizer.txt", verbose=True)
+    #doctest.testfile("../tests/test_organizer.txt", verbose=True)
+    # TODO: Terminar show_info
+    a = '/home/starseeker/Escritorio/pruebas/'
+    b = ['ALL', a]
+    show_info()
+    show_info(a)
+    show_info([item for item in b if item.lower() != 'all'][0], all_info=True)

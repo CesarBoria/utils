@@ -64,13 +64,12 @@ SHOW allows a quick view of what's inside the current directory (or any path)
 ,
 'SHOW':
 """
-SHOW - 
-SHOW ALL - 
-SHOW <VALID_DIR> - 
-SHOW ALL <VALID_DIR> - 
-SHOW SYSTEM - 
-SHOW USER - 
-
+SHOW - Shows everything inside the current directory, parent and child directories
+SHOW ALL - Shows all info of every file and directory inside current directory
+SHOW <VALID_DIR> - Shows everything inside that directory, and parent and child directories of that one
+SHOW ALL <VALID_DIR> - Shows all info of every file and directory inside that directory
+SHOW SYSTEM - Shows all info about root directory
+SHOW USER - Shows all info about current user
 
 Analyzes a directory, showing info like total size used, largest file, absolute path, ...
 

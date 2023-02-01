@@ -14,6 +14,7 @@ dict_with_commands = {
     4: 'HIDDEN',
     5: 'LINK'
 }
+home_path = os.path.expanduser('~')
 
 
 def mod_main():
@@ -87,11 +88,11 @@ def get_path(_input: str):
         if _input[0] in ('.', os.sep):
             os.chdir(_input)
         elif _input[0] == '~':
-            new_path = _input.replace('~', os.environ['HOME'])
+            new_path = os.path.join(home_path, _input[2:])
             os.chdir(new_path)
         else:
-            new_path = os.path.join(os.getcwd(), _input)
-            os.chdir(new_path)
+            child_path = os.path.join(os.getcwd(), _input)
+            os.chdir(child_path)
         print(f'New path set to {os.getcwd()}')
     except FileNotFoundError:
         print('There is no directory with that name')
@@ -124,10 +125,10 @@ def do_command(command: str, _input: list[str]):
         print(f'{start} moved to {new_path}')
 
 
-def order_files(_input: str = os.path.join(os.environ['HOME'], 'Desktop')): # TODO: Universalizar
-    if _input == os.path.join(os.environ['HOME'], 'Desktop'):
-        if not os.path.exists(os.path.join(os.environ['HOME'], 'Desktop')):
-            _input = os.path.join(os.environ['HOME'], 'Escritorio')
+def order_files(_input: str = os.path.join(home_path, 'Desktop')): # TODO: Universalizar
+    if _input == os.path.join(home_path, 'Desktop'):
+        if not os.path.exists(os.path.join(home_path, 'Desktop')):
+            _input = os.path.join(home_path, 'Escritorio')
     if _input.lower() == 'here':
         _input = os.getcwd()
     files = [file for file in os.listdir(_input) if os.path.isfile(os.path.join(_input, file))]
@@ -178,3 +179,4 @@ if __name__ == '__main__':
     show_info()
     show_info(a)
     show_info([item for item in b if item.lower() != 'all'][0], all_info=True)
+    print(os.path.isabs('..'))

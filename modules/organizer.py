@@ -1,9 +1,9 @@
 import os
-import sys
 import shutil
 from main import crear_interfaz
 from modules.interfaces.general_interface import BASE, selector
 from modules.interfaces.organizer_interface import MOD_INTERFACE
+from pathlib import Path
 
 first_print = MOD_INTERFACE['HEAD']
 dict_with_commands = {
@@ -145,7 +145,18 @@ def order_files(_input: str = os.path.join(home_path, 'Desktop')): # TODO: Unive
 
 
 def show_info(_input: str = os.getcwd(), all_info=False):
+    up = Path(_input).parent
+    info_up = [folder for folder in os.listdir(up) if os.path.isdir(os.path.join(up, folder))]
+    folders = [folder for folder in os.listdir(_input) if os.path.isdir(os.path.join(_input, folder))]
+    files = [file for file in os.listdir(_input) if os.path.isfile(os.path.join(_input, file))]
+    for folder in folders:
+        down = [deep_folder for deep_folder in os.listdir(os.path.join(_input, folder)) if os.path.isdir(os.path.join(_input, folder, deep_folder))]
+        print(down) # La mayoria estan vacios!!
+    print(up)
+    print(info_up)
     print(_input)
+    print(folders)
+    print(files)
 
 
 def show_hidden(_input: str = '') -> str:
@@ -174,9 +185,8 @@ if __name__ == '__main__':
     import doctest
     #doctest.testfile("../tests/test_organizer.txt", verbose=True)
     # TODO: Terminar show_info
-    a = '/home/starseeker/Escritorio/pruebas/'
+    a = '/home/starseeker/Escritorio/pruebas'
     b = ['ALL', a]
     show_info()
     show_info(a)
     show_info([item for item in b if item.lower() != 'all'][0], all_info=True)
-    print(os.path.isabs('..'))

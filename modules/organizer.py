@@ -53,7 +53,12 @@ def mod_main():
                 print("Incorrect syntax, restarting the tool")
                 mod_main()
         elif str(_input[0]).lower() == 'order':
-            pass
+            if len(_input) > 2:
+                print(f'Files will be ordered inside {_input[1]}')
+            try:
+                order_files(_input[1])
+            except IndexError:
+                order_files()
         elif str(_input[0]).lower() == 'show':
             pass
         elif str(_input[0]).lower() == 'hidden':
@@ -115,8 +120,21 @@ def do_command(command: str, _input: list[str]):
         print(f'{start} moved to {new_path}')
 
 
-def order_files(_input: str = '') -> str:
-    pass
+def order_files(_input: str = os.path.join(os.environ['HOME'], 'Desktop')): # TODO: Universalizar
+    if _input == os.path.join(os.environ['HOME'], 'Desktop'):
+        if not os.path.exists(os.path.join(os.environ['HOME'], 'Desktop')):
+            _input = os.path.join(os.environ['HOME'], 'Escritorio')
+    files = [file for file in os.listdir(_input) if os.path.isfile(os.path.join(_input, file))]
+    extensions = {file[file.rfind('.') + 1:] for file in files}
+    for ext in extensions:
+        try:
+            os.mkdir(os.path.join(_input, ext))
+        except FileExistsError:
+            pass
+        print(f"Moved *.{ext} files")
+        for file in files:
+            if file.endswith(f".{ext}"):
+                shutil.move(os.path.join(_input, file), os.path.join(_input, ext))
 
 
 def show_info(_input: str = '') -> str:

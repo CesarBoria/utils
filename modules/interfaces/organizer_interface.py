@@ -7,7 +7,7 @@ Docs are available with <COMMAND> INFO
 
 0 PATH - Change, set or show the working path (where the tool can make changes)
 1 DO <COMMAND> - Copy (CP), move (MV) or remove (RM) files and directories
-2 ORDER - Orders the files inside the directory according to extension
+2 ORDER - Orders the files inside a directory according to extension
 3 SHOW - Shows all the information about the current (working) directory
 4 HIDDEN - Shows and creates hidden files and directories
 5 LINK - Creates symlinks
@@ -52,6 +52,12 @@ as the relative path, unless an absolute path is specified
 ,
 'ORDER':
 """
+ORDER <VALID_DIR> - Creates folders inside a valid directory according to file extension and moves
+                    all files inside the corresponding folder according to extension
+ORDER - Creates folders in desktop according to file extension and moves all files inside the
+        corresponding folder ~/Desktop/new_folder_by_extension according to extension
+        
+
 
 """
 ,

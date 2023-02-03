@@ -1,5 +1,7 @@
 import os
 import shutil
+from typing import List
+
 from main import crear_interfaz
 from modules.interfaces.general_interface import BASE, selector
 from modules.interfaces.organizer_interface import MOD_INTERFACE
@@ -27,9 +29,6 @@ def mod_main():
         choice = input("The command doesn't exist or is not recognized. Exit?\n >>> ")
         if choice.lower() in ('y', 'yes', 'si', 'back', 'return', 'go back'):
             crear_interfaz()
-    except Exception as e:
-        print('There was an error, please, copy and paste this following text and send it to my github, thanks :)')
-        print(repr(e))
     else: # TODO: Refactorizar a match/case en Python 3.11
         if str(_input[0]).lower() == 'path': # TODO: Comprobar que funciona
             if len(_input) == 1:
@@ -96,7 +95,6 @@ def get_path(_input: str):
         print(f'New path set to {os.getcwd()}')
     except FileNotFoundError:
         print('There is no directory with that name')
-        mod_main()
 
 
 def do_command(command: str, _input: list[str]):
@@ -149,14 +147,28 @@ def show_info(_input: str = os.getcwd(), all_info=False):
     info_up = [folder for folder in os.listdir(up) if os.path.isdir(os.path.join(up, folder))]
     folders = [folder for folder in os.listdir(_input) if os.path.isdir(os.path.join(_input, folder))]
     files = [file for file in os.listdir(_input) if os.path.isfile(os.path.join(_input, file))]
+    info_down = ""
     for folder in folders:
         down = [deep_folder for deep_folder in os.listdir(os.path.join(_input, folder)) if os.path.isdir(os.path.join(_input, folder, deep_folder))]
-        print(down) # La mayoria estan vacios!!
-    print(up)
-    print(info_up)
-    print(_input)
-    print(folders)
-    print(files)
+        info_down += f'{folder}: '
+        if len(down) == 0:
+            info_down += '[no directories found]'
+        for directory in down:
+            info_down += f'{directory} '
+        info_down += f'\n'
+    print(
+f"""Path: {_input}
+
+Directories upwards:
+{" | ".join(info_up)}
+
+Contents of {_input}:
+-> Directories: {" ".join(folders)}
+-> Files: {" ".join(files)}
+
+Directories downwards:
+{info_down}
+""")
 
 
 def show_hidden(_input: str = '') -> str:
@@ -175,7 +187,7 @@ def parse_tool() -> list[str]:
         crear_interfaz()
     if _input[0] in [str(option) for option in tuple(dict_with_commands.keys())]:
         _input[0] = dict_with_commands[int(_input[0])]
-    if _input[1].lower():
+    if len(_input) > 1 and _input[1].lower() == 'info':
         print(MOD_INTERFACE[_input[0].upper()])
         mod_main()
     return _input
@@ -183,10 +195,4 @@ def parse_tool() -> list[str]:
 
 if __name__ == '__main__':
     import doctest
-    #doctest.testfile("../tests/test_organizer.txt", verbose=True)
-    # TODO: Terminar show_info
-    a = '/home/starseeker/Escritorio/pruebas'
-    b = ['ALL', a]
-    show_info()
-    show_info(a)
-    show_info([item for item in b if item.lower() != 'all'][0], all_info=True)
+    doctest.testfile("../tests/test_organizer.txt", verbose=True)

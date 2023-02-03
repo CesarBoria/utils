@@ -142,7 +142,7 @@ def order_files(_input: str = os.path.join(home_path, 'Desktop')): # TODO: Unive
                 shutil.move(os.path.join(_input, file), os.path.join(_input, ext))
 
 
-def show_info(_input: str = os.getcwd(), all_info=False):
+def show_info(_input: str = os.getcwd(), all_info=False): # TODO: Tal vez padre puede hacerse mejor, e hijo puede mostrar recursivamente elementos
     up = Path(_input).parent
     info_up = [folder for folder in os.listdir(up) if os.path.isdir(os.path.join(up, folder))]
     folders = [folder for folder in os.listdir(_input) if os.path.isdir(os.path.join(_input, folder))]
@@ -156,7 +156,12 @@ def show_info(_input: str = os.getcwd(), all_info=False):
         for directory in down:
             info_down += f'{directory} '
         info_down += f'\n'
-    print(
+    if all_info == True: # TODO: owner size (human) d.creation d.modification NAME inode | total size in folder | order by size | nº of hidden items | recursive ?
+        print(f"""Path: {_input}
+
+""")
+    else:
+        print(
 f"""Path: {_input}
 
 Directories upwards:
@@ -169,7 +174,6 @@ Contents of {_input}:
 Directories downwards:
 {info_down}
 """)
-
 
 def show_hidden(_input: str = '') -> str:
     pass

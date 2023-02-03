@@ -9,8 +9,7 @@ Docs are available with <COMMAND> INFO
 1 DO <COMMAND> - Copy (CP), move (MV) or remove (RM) files and directories
 2 ORDER - Orders the files inside a directory according to extension
 3 SHOW - Shows all the information about the current (working) directory
-4 HIDDEN - Shows and creates hidden files and directories
-5 LINK - Creates symlinks
+4 LINK - Creates symlinks
 
 Example: Moving the file info.txt from /home to /home/dir
 
@@ -69,19 +68,18 @@ SHOW ALL - Shows all info of every file and directory inside current directory
 SHOW <VALID_DIR> - Shows everything inside that directory, and parent and child directories of that one
 SHOW ALL <VALID_DIR> - Shows all info of every file and directory inside that directory
 SHOW SYSTEM - Shows all info about root directory
-SHOW USER - Shows all info about current user
+SHOW HOME - Shows detailed info about home directories (desktop, pictures, ...)
 
 Analyzes a directory, showing info like total size used, largest file, absolute path, ...
 
 """
 ,
-'HIDDEN':
-"""
-
-"""
-,
 'LINK':
 """
+LINK <DESTINY_PATH> - 
+LINK <VALID_DIRECTORY> <DESTINY_PATH> - 
 
+Creates a symlink between a directory and another. If only one is specified,
+the symlink will be created in the current working directory
 """
 }

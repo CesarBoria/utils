@@ -1,7 +1,5 @@
 import os
 import shutil
-from typing import List
-
 from main import crear_interfaz
 from modules.interfaces.general_interface import BASE, selector
 from modules.interfaces.organizer_interface import MOD_INTERFACE
@@ -13,8 +11,7 @@ dict_with_commands = {
     1: 'DO',
     2: 'ORDER',
     3: 'SHOW',
-    4: 'HIDDEN',
-    5: 'LINK'
+    4: 'LINK',
 }
 home_path = os.path.expanduser('~')
 
@@ -51,7 +48,6 @@ def mod_main():
             except Exception as e:
                 print(repr(e))
                 print("Incorrect syntax, restarting the tool")
-                mod_main()
         elif str(_input[0]).lower() == 'order':
             if len(_input) > 2:
                 print(f'Files will be ordered inside {_input[1]}')
@@ -62,16 +58,18 @@ def mod_main():
         elif str(_input[0]).lower() == 'show':
             if len(_input) > 3:
                 print("Incorrect syntax, restarting the tool")
-                mod_main()
             if 'all' in str(_input[1]).lower() or 'all' in str(_input[2]).lower():
                 try:
                     show_info([item for item in _input[1:] if item.lower() != 'all'][0], all_info=True)
                 except IndexError:
                     show_info()
-        elif str(_input[0]).lower() == 'hidden':
-            pass
         elif str(_input[0]).lower() == 'link':
-            pass
+            if len(_input) > 3:
+                print(f"Only {_input[1]} and {_input[2]} will be used")
+            try:
+                make_links(_input[1], _input[2])
+            except OSError:
+                print('Information was incorrect, restarting the tool')
         else:
             print('Command not recognized. Introduce START to restart the tool') # TODO: Es necesario?
             out = input(BASE)
@@ -143,6 +141,10 @@ def order_files(_input: str = os.path.join(home_path, 'Desktop')): # TODO: Unive
 
 
 def show_info(_input: str = os.getcwd(), all_info=False): # TODO: Tal vez padre puede hacerse mejor, e hijo puede mostrar recursivamente elementos
+    if _input.lower() == 'system':
+        pass
+    elif _input.lower() == 'home':
+        pass
     up = Path(_input).parent
     info_up = [folder for folder in os.listdir(up) if os.path.isdir(os.path.join(up, folder))]
     folders = [folder for folder in os.listdir(_input) if os.path.isdir(os.path.join(_input, folder))]
@@ -156,7 +158,7 @@ def show_info(_input: str = os.getcwd(), all_info=False): # TODO: Tal vez padre 
         for directory in down:
             info_down += f'{directory} '
         info_down += f'\n'
-    if all_info == True: # TODO: owner size (human) d.creation d.modification NAME inode | total size in folder | order by size | nº of hidden items | recursive ?
+    if all_info is True: # TODO: owner size (human) d.creation d.modification NAME inode | total size in folder | order by size | nº of hidden items | recursive ?
         print(f"""Path: {_input}
 
 """)
@@ -175,12 +177,11 @@ Directories downwards:
 {info_down}
 """)
 
-def show_hidden(_input: str = '') -> str:
-    pass
 
 
-def make_links(_input: str = '') -> str:
-    pass
+def make_links(destination: str, origin: str = os.getcwd()):
+    os.symlink(origin, destination)
+    print("The symlink has been created")
 
 
 def parse_tool() -> list[str]:

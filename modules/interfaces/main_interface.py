@@ -47,7 +47,6 @@ class Interfaz:
         "from modules.info import mod_main\nmod_main()",
         "from modules.initializer import mod_main\nmod_main()",
         "from modules.organizer import mod_main\nmod_main()",
-        "from modules.analyzer import mod_main\nmod_main()",
         "from modules.cron import mod_main\nmod_main()",
         "from modules.dotfile import mod_main\nmod_main()",
         "from modules.import_checker import mod_main\nmod_main()",

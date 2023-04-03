@@ -1,3 +1,7 @@
+
+THIS PROJECT IS DISCONTINUED AND WILL BE ELIMINATED!!
+
+
 # Starseeker - utils
 ## A collection of OS utilities written in Python
 

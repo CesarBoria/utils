@@ -9,3 +9,5 @@ Running the test
 Traceback (most recent call last):
 ...
 TypeError: mod_main() takes 0 positional arguments but 1 was given
+
+asdasdasd
